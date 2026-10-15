@@ -53,6 +53,9 @@ export default function ArticleDetailPage() {
 
   return (
     <div className="mx-auto max-w-3xl space-y-6">
+      <Link to="/" className="inline-block text-sm text-muted-foreground hover:text-foreground">
+        ← 返回首页
+      </Link>
       <article>
         <h1 className="text-2xl font-bold leading-snug">{article.title}</h1>
         <div className="mt-3 flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
@@ -60,9 +63,11 @@ export default function ArticleDetailPage() {
           <span>{relativeTime(article.createdAt)}</span>
           <span className="flex gap-1.5">
             {article.tags.map((tag) => (
-              <Badge key={tag} variant="secondary">
-                {tag}
-              </Badge>
+              <Link key={tag} to={`/?tag=${tag}`}>
+                <Badge variant="secondary" className="cursor-pointer hover:bg-secondary/80">
+                  {tag}
+                </Badge>
+              </Link>
             ))}
           </span>
         </div>
