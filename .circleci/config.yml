@@ -1,0 +1,23 @@
+version: 2.1
+
+jobs:
+  backend:
+    docker:
+      - image: cimg/openjdk:21.0
+    steps:
+      - setup_remote_docker
+      - checkout
+      - restore_cache:
+          key: m2-{{ checksum "pom.xml" }}
+      - run:
+          name: 后端构建与测试（单测 + Testcontainers 集成测试）
+          command: ./mvnw -B -ntp verify
+      - save_cache:
+          key: m2-{{ checksum "pom.xml" }}
+          paths:
+            - ~/.m2
+
+workflows:
+  verify:
+    jobs:
+      - backend

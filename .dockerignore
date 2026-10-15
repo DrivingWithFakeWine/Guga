@@ -1,0 +1,9 @@
+.git
+.idea
+.claude
+target
+frontend/node_modules
+frontend/dist
+*.iml
+.env
+*.log

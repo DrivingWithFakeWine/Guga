@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/guga}
+    username: ${SPRING_DATASOURCE_USERNAME:guga}
+    password: ${SPRING_DATASOURCE_PASSWORD:guga}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  flyway:
+    enabled: true
+
+guga:
+  jwt:
+    # 开发默认值仅供本地调试，部署必须通过 JWT_SECRET 环境变量覆盖
+    secret: ${JWT_SECRET:guga-dev-secret-0123456789abcdef-guga-dev-secret-0123456789abcdef}
+    ttl-hours: 72
+
+server:
+  port: 8080
