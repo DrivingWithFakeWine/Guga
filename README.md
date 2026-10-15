@@ -39,4 +39,5 @@ docker compose up -d --build
 
 | 版本 | 内容 |
 | --- | --- |
+| 1.0.1 | JWT 认证：注册/登录/me，数据库 V1 迁移（全部表结构），Spring Security 无状态过滤链，统一错误响应，15 个单测/集成测试 |
 | 1.0.0 | 项目骨架：Maven 工程 + 空应用、Docker Compose 三容器编排、CI 流水线、需求文档补全 |
