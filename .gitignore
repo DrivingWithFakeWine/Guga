@@ -4,6 +4,7 @@ frontend/dist/
 .idea/
 *.iml
 .claude/
+tasks/
 .env
 *.log
 .DS_Store

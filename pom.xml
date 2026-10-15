@@ -13,7 +13,7 @@
 
     <groupId>pl.piomin.services</groupId>
     <artifactId>guga</artifactId>
-    <version>1.0.4</version>
+    <version>1.0.5</version>
     <name>guga</name>
     <description>掘金式技术博客（全栈面试作业）</description>
 

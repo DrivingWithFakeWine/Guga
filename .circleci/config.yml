@@ -33,8 +33,25 @@ jobs:
           paths:
             - ~/.npm
 
+  docker:
+    machine: true
+    steps:
+      - checkout
+      - run:
+          name: Docker Compose 构建校验（一键部署的两份镜像）
+          command: |
+            export JWT_SECRET=ci-dummy-secret-0123456789abcdef-0123456789abcdef
+            docker compose build
+            docker compose config -q
+
 workflows:
   verify:
     jobs:
       - backend
       - frontend
+  verify-docker:
+    jobs:
+      - docker:
+          filters:
+            branches:
+              only: main
