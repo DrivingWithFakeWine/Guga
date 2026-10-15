@@ -1,13 +1,8 @@
 package pl.piomin.services.guga;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import pl.piomin.services.guga.support.IntegrationTestBase;
-
-import java.util.UUID;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -16,25 +11,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 class AuthApiTest extends IntegrationTestBase {
 
-    @Autowired
-    private ObjectMapper objectMapper;
-
-    private String uniqueSuffix() {
-        return UUID.randomUUID().toString().replace("-", "").substring(0, 12);
-    }
-
     private String registerBody(String username, String email, String password) {
         return "{\"username\":\"%s\",\"email\":\"%s\",\"password\":\"%s\"}".formatted(username, email, password);
-    }
-
-    /** 注册并返回 token，供需要登录态的用例复用。 */
-    private String registerAndGetToken(String username, String email) throws Exception {
-        String body = mockMvc.perform(post("/api/auth/register")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(registerBody(username, email, "password123")))
-                .andExpect(status().isCreated())
-                .andReturn().getResponse().getContentAsString(java.nio.charset.StandardCharsets.UTF_8);
-        return objectMapper.readTree(body).get("token").asText();
     }
 
     @Test
