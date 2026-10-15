@@ -17,7 +17,24 @@ jobs:
           paths:
             - ~/.m2
 
+  frontend:
+    docker:
+      - image: node:24
+    steps:
+      - checkout
+      - restore_cache:
+          key: npm-{{ checksum "frontend/package-lock.json" }}
+      - run:
+          name: 前端测试与构建
+          command: npm ci && npm run test -- --run && npm run build
+          working_directory: frontend
+      - save_cache:
+          key: npm-{{ checksum "frontend/package-lock.json" }}
+          paths:
+            - ~/.npm
+
 workflows:
   verify:
     jobs:
       - backend
+      - frontend

@@ -39,6 +39,7 @@ docker compose up -d --build
 
 | 版本 | 内容 |
 | --- | --- |
+| 1.0.3 | 前端骨架：Vite 6 + React 19 + Tailwind 3.4 + shadcn 风格组件、路由、登录/注册（RHF + zod4）、首页列表、axios 拦截器；7 个 Vitest 用例；浏览器实测注册/登录/退出全通 |
 | 1.0.2 | 业务 API：文章 CRUD/分页/标签/搜索/热门排序、评论、点赞切换（34 个测试全绿 + 双用户冒烟验证） |
 | 1.0.1 | JWT 认证：注册/登录/me，数据库 V1 迁移（全部表结构），Spring Security 无状态过滤链，统一错误响应，15 个单测/集成测试 |
 | 1.0.0 | 项目骨架：Maven 工程 + 空应用、Docker Compose 三容器编排、CI 流水线、需求文档补全 |
